@@ -24,8 +24,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
+        with:
+          ref: "${{ github.ref }}"
+          fetch-depth: 0
+          
+      - id: get_changed_files
+        uses: jitterbit/get-changed-files@v1
+      
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          git diff "${{ github.event.before }}" "${{ github.event.after }}"
+          echo ${{ steps.get_changed_files.outputs.all }}
+          echo ${{ github.event_name }}
+          git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
