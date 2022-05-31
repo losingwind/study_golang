@@ -27,8 +27,10 @@ jobs:
         with:
           ref: "${{ github.ref }}"
           fetch-depth: 0
+          
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
+          echo ${{ github.event_name }}
           git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
