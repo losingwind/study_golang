@@ -28,10 +28,12 @@ jobs:
           ref: "${{ github.ref }}"
           fetch-depth: 0
           
-      - uses: jitterbit/get-changed-files@v1
+      - id: get_changed_files
+        uses: jitterbit/get-changed-files@v1
       
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
+          echo ${{ steps.get_changed_files.outputs.all }}
           echo ${{ github.event_name }}
           git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
