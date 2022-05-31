@@ -28,5 +28,4 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          echo "${{ toJSON(github) }}"
-          git diff "${{ github.before }}" "${{ github.after }}"
+          git diff "${{ github.event.before }}" "${{ github.event.after }}"
