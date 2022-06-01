@@ -34,7 +34,7 @@ jobs:
           
       - id: test
         run: |
-          echo "test,test1"
+          echo "::set-output name=test::test,test1"
 
       - run: |
-          echo ${{ steps.test.outputs }}
+          echo ${{ steps.test.outputs.test }}
