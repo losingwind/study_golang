@@ -37,4 +37,4 @@ jobs:
           echo "test,test1"
 
       - run: |
-          echo ${{.steps.test.outputs }}
+          echo ${{ steps.test.outputs }}
