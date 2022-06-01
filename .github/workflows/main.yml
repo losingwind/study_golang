@@ -29,6 +29,12 @@ jobs:
         uses: jitterbit/get-changed-files@v1
       
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: |
+      - run: |
           echo ${{ steps.get_changed_files.outputs.all }}
+          
+      - id: test
+        run: |
+          echo "test,test1"
+
+      - run: |
+          echo ${{.steps.test.outputs }}
