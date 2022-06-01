@@ -34,7 +34,10 @@ jobs:
           
       - id: test
         run: |
-          echo "::set-output name=test::test,test1"
+          svcs="test1,test2"
+          echo "::set-output name=test::$svcs"
 
       - run: |
-          echo ${{ steps.test.outputs.test }}
+          echo ${{ env.svcs }}
+        env:
+          svcs: ${{ steps.test.outputs.test }}
