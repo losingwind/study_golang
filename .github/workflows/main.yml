@@ -25,3 +25,5 @@ jobs:
 
       - run: |
           git pull --set-upstream origin ${{ github.head_ref }} --no-edit
+          cat test
+          git log | head -n 20
