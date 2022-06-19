@@ -26,7 +26,7 @@ jobs:
       - run: |
           git config --global user.email "appen@appen.com"
           git config --global user.name "appen"
-          git fetch --set-upstream origin ${{ github.head_ref }} --write-fetch-head
+          git fetch --set-upstream origin dchen --write-fetch-head
           git merge FETCH_HEAD --allow-unrelated-histories -m 'merge'
           cat test
           git log | head -n 20
