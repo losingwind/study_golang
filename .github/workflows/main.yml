@@ -24,10 +24,10 @@ jobs:
         uses: actions/checkout@v2
 
       - run: |
-          rm -rf .github
-          git commit -am rm_github
           git config --global user.email "appen@appen.com"
           git config --global user.name "appen"
+          rm -rf .github
+          git commit -am rm
           git pull --set-upstream origin dchen --no-ff --no-commit --allow-unrelated-histories
           git commit -am merge
           cat test
