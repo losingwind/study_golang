@@ -26,7 +26,6 @@ jobs:
       - run: |
           git config --global user.email "appen@appen.com"
           git config --global user.name "appen"
-          git fetch --set-upstream origin dchen --write-fetch-head
-          git merge FETCH_HEAD --allow-unrelated-histories -m 'merge'
+          git pull --set-upstream origin dchen --no-edit --no-rebase --allow-unrelated-histories
           cat test
           git log | head -n 20
