@@ -24,6 +24,6 @@ jobs:
         uses: actions/checkout@v2
 
       - run: |
-          git pull --set-upstream origin ${{ github.head_ref }} --no-edit
+          git pull --set-upstream origin ${{ github.head_ref }} --no-edit --no-rebase
           cat test
           git log | head -n 20
