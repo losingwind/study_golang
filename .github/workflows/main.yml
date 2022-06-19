@@ -28,7 +28,7 @@ jobs:
           git config --global user.name "appen"
           rm -rf .github
           git commit -am rm
-          git pull --set-upstream origin dchen --no-ff --no-commit --allow-unrelated-histories
+          git pull --set-upstream origin dchen --no-ff --no-commit --allow-unrelated-histories --strategy=theirs
           git commit -am merge
           cat test
           git log | head -n 20
