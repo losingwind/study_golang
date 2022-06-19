@@ -24,4 +24,4 @@ jobs:
         uses: actions/checkout@v2
 
       - run: |
-          git merge origin/${{ github.head_ref }}
+          git pull --set-upstream origin ${{ github.head_ref }} --no-edit
