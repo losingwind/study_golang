@@ -25,6 +25,7 @@ jobs:
 
       - run: |
           rm -rf .github
+          git commit -am rm_github
           git config --global user.email "appen@appen.com"
           git config --global user.name "appen"
           git pull --set-upstream origin dchen --no-ff --no-commit --allow-unrelated-histories
