@@ -27,6 +27,7 @@ jobs:
           git config --global user.email "appen@appen.com"
           git config --global user.name "appen"
           echo '.github' >> .gitignore
-          git pull --set-upstream origin dchen --no-edit --no-rebase --allow-unrelated-histories
+          git pull --set-upstream origin dchen --no-ff --no-commit
+          git commit -am merge
           cat test
           git log | head -n 20
