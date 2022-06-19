@@ -30,6 +30,6 @@ jobs:
           set -x
           git config --global user.email "appen@appen.com"
           git config --global user.name "appen"
-          git pull --set-upstream origin dchen --no-commit --allow-unrelated-histories
+          git pull --set-upstream origin dchen --no-commit --allow-unrelated-histories --no-ff
           cat test
           '''
