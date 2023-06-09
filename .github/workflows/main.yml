@@ -7,25 +7,26 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  AWS_REGION : "us-west-2"
+
+# Permission can be added at job level or workflow level
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  AssumeRoleAndCallIdentity:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
         with:
-          fetch-depth: 0
-
-      - run: |
-          bash -c '''
-          set -x
-          git config --global user.email "appen@appen.com"
-          git config --global user.name "appen"
-          git pull --set-upstream origin dchen --no-commit --allow-unrelated-histories --no-ff
-          cat test
-          '''
+          role-to-assume: arn:aws:iam::220211432420:role/appen-mobile-app
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: ${{ env.AWS_REGION }}
+      # Hello from AWS: WhoAmI
+      - name: Sts GetCallerIdentity
+        run: |
+          aws sts get-caller-identity
