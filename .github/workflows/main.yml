@@ -32,6 +32,6 @@ jobs:
 
       - name: npm login
         run: |
-          aws codeartifact login --tool npm --domain connect-appen --repository appen-connect-npm-repo
+          aws codeartifact login --tool npm --domain connect-appen --domain-owner 220211432420 --region us-west-2 --repository appen-connect-npm-repo
           npm -d ping
           npm install JSONStream
